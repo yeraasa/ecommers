@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\cart;
+use App\Models\Cart;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $cartItems = Cart::with('product')->get();
+        $cartItems = Cart::with('product')->where('user_id', 1)->get();
 
         $subtotal = $cartItems->sum(function ($item) {
             return $item->product->price * $item->quantity;
@@ -21,59 +19,50 @@ class CartController extends Controller
         $tax = $subtotal * 0.1;
         $total = $subtotal + $tax;
 
-        return view('cart', compact(
-            'cartItems',
-            'subtotal',
-            'tax',
-            'total'
-        ));
+        return view('cart', compact('cartItems', 'subtotal', 'tax', 'total'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $productId = $request->product_id;
+
+        $product = Product::findOrFail($productId);
+
+        $cartItem = Cart::where('user_id', 1)
+            ->where('product_id', $productId)
+            ->first();
+
+        if ($cartItem) {
+            $cartItem->increment('quantity');
+        } else {
+            Cart::create([
+                'user_id' => 1,
+                'product_id' => $productId,
+                'quantity' => 1,
+            ]);
+        }
+
+        return redirect()->route('cart')->with('success', 'Berhasil menambahkan ' . $product->name);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(cart $cart)
+    public function update(Request $request, Cart $cart)
     {
-        //
+        if ($request->action === 'plus') {
+            $cart->increment('quantity');
+        } elseif ($request->action === 'minus') {
+            if ($cart->quantity > 1) {
+                $cart->decrement('quantity');
+            } else {
+                $cart->delete();
+            }
+        }
+
+        return redirect()->back();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(cart $cart)
+    public function destroy(Cart $cart)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, cart $cart)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(cart $cart)
-    {
-        //
+        $cart->delete();
+        return redirect()->back()->with('success', 'Item removed.');
     }
 }

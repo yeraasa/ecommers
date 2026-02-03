@@ -18,7 +18,7 @@
                 </a>
                 <a class="text-slate-400 hover:text-primary" href="#"><span
                         class="material-symbols-outlined">search</span></a>
-                <a class="text-slate-400 hover:text-primary" href="{{ route('cart') }}"><span
+                <a class="text-slate-400 hover:text-primary" href="{{ route('cart.index') }}"><span
                         class="material-symbols-outlined">shopping_cart</span></a>
                 <a class="text-slate-400 hover:text-primary" href="#"><span
                         class="material-symbols-outlined">person</span></a>
@@ -39,7 +39,6 @@
                 <span class="material-symbols-outlined">notifications</span>
             </header>
 
-            {{-- Daily Essentials --}}
             <section class="px-4 pb-8 mt-4">
 
                 <div class="grid grid-cols-5 gap-2">
@@ -47,19 +46,23 @@
                         <div class="flex flex-col gap-2">
                             <div class="aspect-square bg-white dark:bg-slate-800 rounded-lg thin-border overflow-hidden">
                                 <div class="w-full h-full bg-cover bg-center"
-                                    style="background-image: url('{{ asset($item['image']) }}')">
+                                    style="background-image: url('{{ asset($item->image ?? 'default-product.jpg') }}')">
                                 </div>
                             </div>
 
                             <div class="flex flex-col">
-                                <p class="text-[9px] font-bold truncate">{{ $item['name'] }}</p>
+                                <p class="text-[9px] font-bold truncate">{{ $item->name }}</p>
                                 <div class="flex justify-between items-center">
-                                    <p class="text-[9px] text-slate-500">${{ $item['price'] }}</p>
-                                    <a href="{{ route('cart') }}"
-                                        class="bg-primary text-white size-4 flex items-center justify-center rounded-sm">
-                                        <span class="material-symbols-outlined text-[10px]">add_shopping_cart</span>
+                                    <p class="text-[9px] text-slate-500">${{ number_format($item->price, 2) }}</p>
 
-                                    </a>
+                                    <form action="{{ route('cart.store') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="product_id" value="{{ $item->id }}">
+                                        <button type="submit"
+                                            class="bg-primary text-white size-4 flex items-center justify-center rounded-sm">
+                                            <span class="material-symbols-outlined text-[10px]">add_shopping_cart</span>
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -68,7 +71,6 @@
 
             </section>
 
-            {{-- Categories --}}
             <section class="px-4">
                 <h3 class="font-bold mb-4">Shop by Category</h3>
                 <div class="grid grid-cols-2 gap-4">

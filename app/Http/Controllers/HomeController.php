@@ -36,6 +36,6 @@ class HomeController extends Controller
             ],
         ];
 
-        return view('home', compact('items'));
+        // return view('home', compact('items'));
     }
 }

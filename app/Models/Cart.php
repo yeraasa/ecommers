@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class cart extends Model
+class Cart extends Model
 {
     protected $fillable = [
         'user_id',
@@ -17,8 +17,8 @@ class cart extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function products()
+    public function product()
     {
-        return $this->belongsTo(Products::class);
+        return $this->belongsTo(Product::class, 'product_id');
     }
 }
