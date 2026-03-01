@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'PetPal - Cart')
+@section('title', 'MidnightBloom - Cart')
 
 @section('content')
     <main class="max-w-7xl mx-auto px-4 py-8">

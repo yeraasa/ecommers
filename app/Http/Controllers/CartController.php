@@ -19,7 +19,7 @@ class CartController extends Controller
         $tax = $subtotal * 0.1;
         $total = $subtotal + $tax;
 
-        return view('cart', compact('cartItems', 'subtotal', 'tax', 'total'));
+        return view('user.cart', compact('cartItems', 'subtotal', 'tax', 'total'));
     }
 
     public function store(Request $request)
@@ -42,7 +42,7 @@ class CartController extends Controller
             ]);
         }
 
-        return redirect()->route('cart')->with('success', 'Berhasil menambahkan ' . $product->name);
+        return redirect()->route('cart.index')->with('success', 'Berhasil menambahkan ' . $product->name);
     }
 
     public function update(Request $request, Cart $cart)

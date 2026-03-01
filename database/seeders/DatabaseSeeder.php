@@ -6,6 +6,7 @@ use App\Models\User;
 use Hash;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash as FacadesHash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,13 +18,13 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'id' => 1,
-            'name' => 'Guest User',
-            'email' => 'guest@petpal.com',
-            'password' => Hash::make('password'),
-            'role' => 'customer',
+            'name' => 'Admin',
+            'email' => 'admin@petpal.com',
+            'password' => FacadesHash::make('password'),
+            'role' => 'admin',
         ]);
 
+        $this->call(CategorySeeder::class);
         $this->call(ProductSeeder::class);
     }
 }

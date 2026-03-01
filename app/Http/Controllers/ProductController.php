@@ -9,8 +9,9 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $items = Product::all(); 
-        return view('home', compact('items'));
+        $items = Product::all();
+        return view('user.home', compact('items'));
     }
+    
 }
 
