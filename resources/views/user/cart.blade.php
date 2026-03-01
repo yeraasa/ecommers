@@ -17,16 +17,16 @@
 
             {{-- LEFT: CART ITEMS --}}
             <div class="w-full lg:w-[70%]">
-
                 @forelse($cartItems as $item)
                     <div class="border-b border-gray-200 py-6">
-
                         <div class="flex gap-6 items-center">
-                            <div class="aspect-square w-32 h-32 rounded-xl bg-cover bg-center"
-                                style="background-image:url('{{ $item->product->image }}')">
+                            {{-- PERBAIKAN DI SINI: Wadah Gambar --}}
+                            <div class="w-32 h-32 flex-shrink-0 overflow-hidden rounded-xl border bg-gray-50">
+                                <img src="{{ asset('storage/' . $item->product->image) }}" alt="{{ $item->product->name }}"
+                                    class="w-full h-full object-cover" />
                             </div>
 
-                            <div class="flex flex-1 justify-between gap-4">
+                            <div class="flex flex-1 justify-between items-center gap-4">
                                 <div>
                                     <h3 class="text-lg font-semibold">
                                         {{ $item->product->name }}
@@ -42,13 +42,13 @@
                                 {{-- QTY CONTROL --}}
                                 <div class="flex flex-col items-end gap-3">
                                     <div class="flex items-center gap-3 bg-white border p-1 rounded-lg">
-
                                         {{-- MINUS --}}
                                         <form method="POST" action="{{ route('cart.update', $item) }}">
                                             @csrf
                                             @method('PATCH')
                                             <input type="hidden" name="action" value="minus">
-                                            <button class="w-8 h-8">−</button>
+                                            <button
+                                                class="w-8 h-8 flex items-center justify-center hover:bg-gray-100 rounded">−</button>
                                         </form>
 
                                         <span class="w-8 text-center font-bold">
@@ -60,7 +60,8 @@
                                             @csrf
                                             @method('PATCH')
                                             <input type="hidden" name="action" value="plus">
-                                            <button class="w-8 h-8">+</button>
+                                            <button
+                                                class="w-8 h-8 flex items-center justify-center hover:bg-gray-100 rounded">+</button>
                                         </form>
                                     </div>
 
@@ -76,7 +77,8 @@
                             <form method="POST" action="{{ route('cart.destroy', $item) }}">
                                 @csrf
                                 @method('DELETE')
-                                <button class="flex items-center gap-2 text-xs font-bold text-gray-400 hover:text-red-500">
+                                <button
+                                    class="flex items-center gap-2 text-xs font-bold text-gray-400 hover:text-red-500 transition-colors">
                                     <span class="material-symbols-outlined text-sm">delete</span>
                                     Remove
                                 </button>
@@ -84,9 +86,11 @@
                         </div>
                     </div>
                 @empty
-                    <p class="text-gray-500">Cart kamu masih kosong 🛒</p>
+                    <div class="text-center py-20">
+                        <p class="text-gray-500">Cart kamu masih kosong 🛒</p>
+                        <a href="/" class="text-primary font-bold mt-4 inline-block underline">Mulai Belanja</a>
+                    </div>
                 @endforelse
-
             </div>
 
             {{-- RIGHT: SUMMARY --}}

@@ -13,8 +13,8 @@
                     @foreach ($items as $item)
                         <div class="flex flex-col gap-2">
                             <div class="aspect-square bg-white dark:bg-slate-800 rounded-lg thin-border overflow-hidden">
-                                <div class="w-full h-full bg-cover bg-center"
-                                    style="background-image: url('{{ asset($item->image ?? 'default-product.jpg') }}')">
+                                <div class="w-full h-full bg-cover bg-center">
+                                    <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}"/>
                                 </div>
                             </div>
 

@@ -1,11 +1,12 @@
 @extends('layouts.admin')
 
-@section('title', 'Add Products')
+@section('title', 'Edit Product')
 
 @section('content')
-    <form action="{{ route('manage-products.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('manage-products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
-        {{-- show validation errors --}}
+        @method('PUT')
+
         @if ($errors->any())
             <div class="mb-6 p-4 bg-red-100 text-red-700 rounded">
                 <ul class="list-disc pl-5">
@@ -39,7 +40,6 @@
 
                             <p class="text-slate-500 text-[11px]">JPG, PNG</p>
 
-                            <!-- INPUT FILE ASLI -->
                             <input type="file" name="image" accept="image/png,image/jpeg" class="cursor-pointer text-xs
                                        file:px-4 file:py-2
                                        file:rounded-lg file:border-0
@@ -52,12 +52,12 @@
                         <h3 class="text-sm font-bold text-primary mb-4">status</h3>
 
                         <label class="flex items-center gap-3">
-                            <input type="radio" name="status" value="active" {{ old('status', 'active') == 'active' ? 'checked' : '' }}>
+                            <input type="radio" name="status" value="active" {{ old('status', $product->status) == 'active' ? 'checked' : '' }}>
                             <span class="text-sm">available</span>
                         </label>
 
                         <label class="flex items-center gap-3 mt-2">
-                            <input type="radio" name="status" value="inactive" {{ old('status') == 'inactive' ? 'checked' : '' }}>
+                            <input type="radio" name="status" value="inactive" {{ old('status', $product->status) == 'inactive' ? 'checked' : '' }}>
                             <span class="text-sm">unavailable</span>
                         </label>
                     </section>
@@ -71,38 +71,38 @@
                         <div>
                             <label class="text-xs font-bold uppercase">product name</label>
                             <input type="text" name="name" class="w-full px-4 py-3 border rounded"
-                                value="{{ old('name') }}">
+                                value="{{ old('name', $product->name) }}">
                         </div>
 
                         <div class="grid grid-cols-2 gap-6">
                             <div>
                                 <label class="text-xs font-bold uppercase">category</label>
                                 <select name="category" class="w-full px-4 py-3 border rounded">
-                                    <option value="" {{ old('category') == '' ? 'selected' : '' }}>select category</option>
-                                    <option value="flowers" {{ old('category') == 'flowers' ? 'selected' : '' }}>flowers
-                                    </option>
-                                    <option value="tools" {{ old('category') == 'tools' ? 'selected' : '' }}>tools</option>
-                                    <option value="seeds" {{ old('category') == 'seeds' ? 'selected' : '' }}>seeds</option>
+                                    <option value="" {{ old('category', $product->category) == '' ? 'selected' : '' }}>select
+                                        category</option>
+                                    <option value="flowers" {{ old('category', $product->category) == 'flowers' ? 'selected' : '' }}>flowers</option>
+                                    <option value="tools" {{ old('category', $product->category) == 'tools' ? 'selected' : '' }}>tools</option>
+                                    <option value="seeds" {{ old('category', $product->category) == 'seeds' ? 'selected' : '' }}>seeds</option>
                                 </select>
                             </div>
 
                             <div>
                                 <label class="text-xs font-bold uppercase">stock</label>
                                 <input type="number" name="stock_quantity" class="w-full px-4 py-3 border rounded"
-                                    value="{{ old('stock_quantity') }}">
+                                    value="{{ old('stock_quantity', $product->stock_quantity) }}">
                             </div>
                         </div>
 
                         <div>
                             <label class="text-xs font-bold uppercase">price</label>
                             <input type="number" name="price" class="w-full px-4 py-3 border rounded"
-                                value="{{ old('price') }}">
+                                value="{{ old('price', $product->price) }}">
                         </div>
 
                         <div>
                             <label class="text-xs font-bold uppercase">description</label>
                             <textarea name="description" rows="5"
-                                class="w-full px-4 py-3 border rounded">{{ old('description') }}</textarea>
+                                class="w-full px-4 py-3 border rounded">{{ old('description', $product->description) }}</textarea>
                         </div>
 
                     </section>
@@ -110,12 +110,12 @@
                     <!-- BUTTONS -->
                     <section class="border border-primary rounded-xl p-8 grid grid-cols-2 gap-6">
                         <button type="submit" class="px-4 py-3 bg-primary text-white rounded">
-                            save
+                            update
                         </button>
 
                         <a href="{{ route('manage-products.index') }}"
                             class="px-4 py-3 bg-gray-500 text-white rounded text-center">
-                            back
+                            cancel
                         </a>
                     </section>
 

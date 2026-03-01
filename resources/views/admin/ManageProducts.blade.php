@@ -3,122 +3,112 @@
 @section('title', 'Add Product')
 
 @section('content')
-    {{-- FIX: pastikan konten di atas overlay --}}
-    <div class="relative z-10">
 
-        <form action="{{ route('manage-products.store') }}" method="POST" enctype="multipart/form-data"
-            class="px-8 pb-12 max-w-5xl">
-            @csrf
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-
-                <!-- LEFT : IMAGE + STATUS -->
-                <div class="lg:col-span-1 space-y-6">
-
-                    <!-- IMAGE -->
-                    <section>
-                        <h3 class="text-sm font-bold text-primary mb-4 flex items-center gap-2">
-                            <span class="material-symbols-outlined text-[18px]">image</span>
-                            product images
-                        </h3>
-
-                        <div
-                            class="flex flex-col items-center justify-center gap-4
-               rounded-xl border-2 border-dashed border-primary/20
-               bg-primary/5 px-6 py-12">
-
-                            <div class="size-16 rounded-full bg-primary/20 flex items-center justify-center text-primary">
-                                <span class="material-symbols-outlined text-[32px]">cloud_upload</span>
-                            </div>
-
-                            <p class="text-slate-500 text-[11px]">JPG, PNG</p>
-
-                            <!-- INPUT FILE ASLI, BUKAN SPAN -->
-                            <input type="file" name="image" accept="image/png,image/jpeg"
-                                class="
-                block
-                w-auto
-                text-xs font-bold text-white
-                file:mr-4
-                file:px-4 file:py-2
-                file:rounded-lg
-                file:border-0
-                file:bg-primary
-                file:text-white
-                file:cursor-pointer
-                cursor-pointer
-            ">
-                        </div>
-                    </section>
-
-                    <!-- STATUS -->
-                    <section class="rounded-xl p-6">
-                        <h3 class="text-sm font-bold text-primary mb-4">status</h3>
-
-                        <label class="flex items-center gap-3">
-                            <input type="radio" name="status" value="aactivee" checked>
-                            <span class="text-sm">available</span>
-                        </label>
-
-                        <label class="flex items-center gap-3 mt-2">
-                            <input type="radio" name="status" value="inactive">
-                            <span class="text-sm">unavailable</span>
-                        </label>
-                    </section>
-                </div>
-
-                <!-- RIGHT : FORM -->
-                <div class="lg:col-span-2 space-y-6">
-
-                    <section class="border border-primary rounded-xl p-8 space-y-6">
-
-                        <div>
-                            <label class="text-xs font-bold uppercase">product name</label>
-                            <input type="text" name="name" class="w-full px-4 py-3 border rounded">
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-6">
-                            <div>
-                                <label class="text-xs font-bold uppercase">category</label>
-                                <select name="category" class="w-full px-4 py-3 border rounded">
-                                    <option value="">select category</option>
-                                    <option value="flowers">flowers</option>
-                                    <option value="tools">tools</option>
-                                    <option value="seeds">seeds</option>
-                                </select>
-                            </div>
-
-                            <div>
-                                <label class="text-xs font-bold uppercase">stock</label>
-                                <input type="number" name="stock_quantity" class="w-full px-4 py-3 border rounded">
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="text-xs font-bold uppercase">price</label>
-                            <input type="number" name="price" class="w-full px-4 py-3 border rounded">
-                        </div>
-
-                        <div>
-                            <label class="text-xs font-bold uppercase">description</label>
-                            <textarea name="description" rows="5" class="w-full px-4 py-3 border rounded"></textarea>
-                        </div>
-
-                    </section>
-
-                    <section class="border border-primary rounded-xl p-8 grid grid-cols-2 gap-6">
-                        <button type="submit" class="px-4 py-3 bg-primary text-white rounded">
-                            save
+    <main class="flex-1 flex flex-col overflow-hidden">
+        <!-- Dashboard Content -->
+        <div class="flex-1 overflow-y-auto p-8">
+            <!-- Action Bar -->
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+                <div class="flex gap-3">
+                    <a href="{{ route('manage-products.create') }}"
+                        class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-xl font-semibold hover:bg-primary/90 transition-colors">
+                        <span class="material-symbols-outlined text-sm">add</span>
+                        <span>Tambah Produk</span>
+                    </a>
+                    <button
+                        class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-colors">
+                        <span class="material-symbols-outlined text-sm">filter_list</span>
+                        <span>Filter</span>
                     </button>
-
-                        <a href="{{ route('manage-products.index') }}"
-                            class="px-4 py-3 bg-gray-500 text-white rounded text-center">
-                            back
-                        </a>
-                    </section>
-
+                </div>
+                <div class="flex gap-2">
+                    <button
+                        class="p-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400">
+                        <span class="material-symbols-outlined">grid_view</span>
+                    </button>
+                    <button
+                        class="p-2 rounded-lg bg-slate-100 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 text-primary">
+                        <span class="material-symbols-outlined">list</span>
+                    </button>
                 </div>
             </div>
-        </form>
-    </div>
+            <!-- Table -->
+            <div
+                class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+                            <th class="px-6 py-4 text-xs font-semibold uppercase text-slate-500 tracking-wider">
+                                Produk</th>
+                            <th class="px-6 py-4 text-xs font-semibold uppercase text-slate-500 tracking-wider">
+                                Kategori</th>
+                            <th class="px-6 py-4 text-xs font-semibold uppercase text-slate-500 tracking-wider">Stok
+                            </th>
+                            <th class="px-6 py-4 text-xs font-semibold uppercase text-slate-500 tracking-wider">
+                                Harga</th>
+                            <th class="px-6 py-4 text-xs font-semibold uppercase text-slate-500 tracking-wider">
+                                Status</th>
+                            <th class="px-6 py-4 text-xs font-semibold uppercase text-slate-500 tracking-wider text-right">
+                                Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+                        @foreach($products as $product)
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-12 h-12 rounded-lg overflow-hidden bg-slate-100">
+                                            @if($product->image)
+                                                <img class="w-full h-full object-cover" src="{{ asset('storage/'.$product->image) }}" alt="{{ $product->name }}" />
+                                            @else
+                                                <div class="w-full h-full bg-gray-200"></div>
+                                            @endif
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold text-sm">{{ $product->name }}</p>
+                                            <p class="text-xs text-slate-500">ID: {{ $product->id }}</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-sm">{{ $product->category }}</td>
+                                <td class="px-6 py-4 text-sm">
+                                    <span class="font-medium">{{ $product->stock_quantity }}</span> <span class="text-slate-400">units</span>
+                                </td>
+                                <td class="px-6 py-4 text-sm font-semibold">Rp {{ number_format($product->price,0,',','.') }}</td>
+                                <td class="px-6 py-4">
+                                    @if($product->status === 'active')
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">Tersedia</span>
+                                    @else
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-rose-100 text-rose-800 dark:bg-rose-900/30 dark:text-rose-400">Tidak tersedia</span>
+                                    @endif
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <div class="flex justify-end gap-2">
+                                        <a href="{{ route('manage-products.edit', $product->id) }}" class="p-1.5 text-slate-400 hover:text-primary hover:bg-primary/10 rounded-lg transition-colors">
+                                            <span class="material-symbols-outlined text-xl">edit</span>
+                                        </a>
+                                        <form action="{{ route('manage-products.destroy', $product->id) }}" method="POST" class="inline-block">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" onclick="return confirm('Delete this product?');" class="p-1.5 text-slate-400 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-900/20 rounded-lg transition-colors">
+                                                <span class="material-symbols-outlined text-xl">delete</span>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                @if(method_exists($products, 'links'))
+                    <div class="px-6 py-4 bg-slate-50 dark:bg-slate-800/50 flex items-center justify-between border-t border-slate-200 dark:border-slate-800">
+                        <p class="text-sm text-slate-500">Menampilkan {{ $products->firstItem() ?? 0 }} sampai {{ $products->lastItem() ?? 0 }} dari {{ $products->total() ?? $products->count() }} produk</p>
+                        <div>
+                            {{ $products->links() }}
+                        </div>
+                    </div>
+                @endif
+            </div>
+        </div>
+    </main>
 @endsection

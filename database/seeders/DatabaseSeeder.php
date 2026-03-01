@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
     {
         User::create([
             'name' => 'Admin',
-            'email' => 'admin@petpal.com',
+            'email' => 'admin@midnight.com',
             'password' => FacadesHash::make('password'),
             'role' => 'admin',
         ]);
