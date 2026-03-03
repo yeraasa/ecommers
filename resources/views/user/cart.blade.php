@@ -21,7 +21,7 @@
                     <div class="border-b border-gray-200 py-6">
                         <div class="flex gap-6 items-center">
                             {{-- PERBAIKAN DI SINI: Wadah Gambar --}}
-                            <div class="w-32 h-32 flex-shrink-0 overflow-hidden rounded-xl border bg-gray-50">
+                            <div class="w-32 h-32 shrink-0 overflow-hidden rounded-xl border bg-gray-50">
                                 <img src="{{ asset('storage/' . $item->product->image) }}" alt="{{ $item->product->name }}"
                                     class="w-full h-full object-cover" />
                             </div>
@@ -88,7 +88,7 @@
                 @empty
                     <div class="text-center py-20">
                         <p class="text-gray-500">Cart kamu masih kosong 🛒</p>
-                        <a href="/" class="text-primary font-bold mt-4 inline-block underline">Mulai Belanja</a>
+                        <a href="{{ route('products.index') }}" class="text-primary font-bold mt-4 inline-block underline">Mulai Belanja</a>
                     </div>
                 @endforelse
             </div>

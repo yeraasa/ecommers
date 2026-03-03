@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class ManageOrders extends Controller
@@ -34,7 +34,7 @@ class ManageOrders extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

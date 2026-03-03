@@ -15,6 +15,8 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::resource('cart', CartController::class);
 Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
 Route::get('/', [AuthController::class, 'index'])->name('auth.index');
+Route::post('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+
 // product management CRUD
 Route::get('/manage-products', [ManageProductss::class, 'index'])->name('manage-products.index');
 Route::get('/manage-products/create', [ManageProductss::class, 'create'])->name('manage-products.create');
