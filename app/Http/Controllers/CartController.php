@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
     public function index()
     {
-        $cartItems = Cart::with('product')->where('user_id', 1)->get();
+        $cartItems = Cart::with('product')->where('user_id', Auth::id())->get();
 
         $subtotal = $cartItems->sum(function ($item) {
             return $item->product->price * $item->quantity;
@@ -28,7 +29,7 @@ class CartController extends Controller
 
         $product = Product::findOrFail($productId);
 
-        $cartItem = Cart::where('user_id', 1)
+        $cartItem = Cart::where('user_id', Auth::id())
             ->where('product_id', $productId)
             ->first();
 
@@ -36,7 +37,7 @@ class CartController extends Controller
             $cartItem->increment('quantity');
         } else {
             Cart::create([
-                'user_id' => 1,
+                'user_id' => Auth::id(),
                 'product_id' => $productId,
                 'quantity' => 1,
             ]);

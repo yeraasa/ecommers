@@ -14,7 +14,7 @@
                         <span> Update Orders</span>
                     </button>
                 </div>
-                
+
             </div>
             <!-- Table Section -->
             <section class="p-8 pt-4">
@@ -34,106 +34,54 @@
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-slate-100 dark:divide-primary/5">
-                                <!-- Order Row 1 -->
-                                <tr class="hover:bg-slate-50 dark:hover:bg-primary/5 transition-colors">
-                                    <td class="px-6 py-5 font-bold text-primary">#MB-001</td>
-                                    <td class="px-6 py-5">
-                                        <div class="flex items-center gap-3">
-                                            <div
-                                                class="w-8 h-8 rounded-full bg-slate-200 dark:bg-primary/20 flex items-center justify-center text-xs font-bold text-primary">
-                                                AS</div>
-                                            <span class="font-medium">Alice Smith</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-5 text-slate-500">2023-10-24</td>
-                                    <td class="px-6 py-5 font-semibold">Rp 250.000</td>
-                                    <td class="px-6 py-5">
-                                        <span
-                                            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-700 dark:bg-amber-500/10 dark:text-amber-500">
-                                            <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
-                                            Pending
-                                        </span>
-                                    </td>
-                                    <td class="px-6 py-5 text-right">
-                                        <button class="text-primary hover:underline text-sm font-bold">Lihat
-                                            Detail</button>
-                                    </td>
-                                </tr>
-                                <!-- Order Row 2 -->
-                                <tr class="hover:bg-slate-50 dark:hover:bg-primary/5 transition-colors">
-                                    <td class="px-6 py-5 font-bold text-primary">#MB-002</td>
-                                    <td class="px-6 py-5">
-                                        <div class="flex items-center gap-3">
-                                            <div
-                                                class="w-8 h-8 rounded-full bg-slate-200 dark:bg-primary/20 flex items-center justify-center text-xs font-bold text-primary">
-                                                BJ</div>
-                                            <span class="font-medium">Bob Johnson</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-5 text-slate-500">2023-10-23</td>
-                                    <td class="px-6 py-5 font-semibold">Rp 450.000</td>
-                                    <td class="px-6 py-5">
-                                        <span
-                                            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700 dark:bg-blue-500/10 dark:text-blue-400">
-                                            <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
-                                            Dikirim
-                                        </span>
-                                    </td>
-                                    <td class="px-6 py-5 text-right">
-                                        <button class="text-primary hover:underline text-sm font-bold">Lihat
-                                            Detail</button>
-                                    </td>
-                                </tr>
-                                <!-- Order Row 3 -->
-                                <tr class="hover:bg-slate-50 dark:hover:bg-primary/5 transition-colors">
-                                    <td class="px-6 py-5 font-bold text-primary">#MB-003</td>
-                                    <td class="px-6 py-5">
-                                        <div class="flex items-center gap-3">
-                                            <div
-                                                class="w-8 h-8 rounded-full bg-slate-200 dark:bg-primary/20 flex items-center justify-center text-xs font-bold text-primary">
-                                                CB</div>
-                                            <span class="font-medium">Charlie Brown</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-5 text-slate-500">2023-10-22</td>
-                                    <td class="px-6 py-5 font-semibold">Rp 120.000</td>
-                                    <td class="px-6 py-5">
-                                        <span
-                                            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">
-                                            <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
-                                            Selesai
-                                        </span>
-                                    </td>
-                                    <td class="px-6 py-5 text-right">
-                                        <button class="text-primary hover:underline text-sm font-bold">Lihat
-                                            Detail</button>
-                                    </td>
-                                </tr>
-                                <!-- Order Row 4 -->
-                                <tr class="hover:bg-slate-50 dark:hover:bg-primary/5 transition-colors">
-                                    <td class="px-6 py-5 font-bold text-primary">#MB-004</td>
-                                    <td class="px-6 py-5">
-                                        <div class="flex items-center gap-3">
-                                            <div
-                                                class="w-8 h-8 rounded-full bg-slate-200 dark:bg-primary/20 flex items-center justify-center text-xs font-bold text-primary">
-                                                DP</div>
-                                            <span class="font-medium">Diana Prince</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-5 text-slate-500">2023-10-21</td>
-                                    <td class="px-6 py-5 font-semibold">Rp 300.000</td>
-                                    <td class="px-6 py-5">
-                                        <span
-                                            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-700 dark:bg-rose-500/10 dark:text-rose-400">
-                                            <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
-                                            Batal
-                                        </span>
-                                    </td>
-                                    <td class="px-6 py-5 text-right">
-                                        <button class="text-primary hover:underline text-sm font-bold">Lihat
-                                            Detail</button>
-                                    </td>
-                                </tr>
+                                @forelse($orders as $order)
+                                    <tr class="hover:bg-slate-50 dark:hover:bg-primary/5 transition-colors">
+                                        <td class="px-6 py-5 font-bold text-primary">
+                                            #MB-{{ str_pad($order->id, 3, '0', STR_PAD_LEFT) }}</td>
+                                        <td class="px-6 py-5">
+                                            <div class="flex items-center gap-3">
+                                                <div
+                                                    class="w-8 h-8 rounded-full bg-slate-200 dark:bg-primary/20 flex items-center justify-center text-xs font-bold text-primary">
+                                                    {{ substr($order->user->name ?? '?', 0, 2) }}
+                                                </div>
+                                                <span class="font-medium">{{ $order->user->name ?? 'Unknown User' }}</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-5 text-slate-500">{{ $order->created_at->format('Y-m-d') }}</td>
+                                        <td class="px-6 py-5 font-semibold">Rp
+                                            {{ number_format($order->total_price, 0, ',', '.') }}</td>
+                                        <td class="px-6 py-5">
+                                            <form action="{{ route('manage-orders.updateStatus', $order->id) }}" method="POST"
+                                                class="flex items-center gap-2">
+                                                @csrf
+                                                <select name="status" onchange="this.form.submit()" class="text-xs font-bold rounded-full px-3 py-1 border-gray-300 focus:border-primary focus:ring-primary
+                                                        @if($order->status == 'pending') bg-amber-100 text-amber-700
+                                                        @elseif($order->status == 'completed')
+                                                        @elseif($order->status == 'shipped')
+                                                        @elseif($order->status == 'delivered')
+                                                        @else @endif
+                                                    ">
+                                                    <option value="pending" {{ $order->status == 'pending' ? 'selected' : '' }}>
+                                                        Pending</option>
+                                                    <option value="completed" {{ $order->status == 'completed' ? 'selected' : '' }}>Completed</option>
+                                                    <option value="shipped" {{ $order->status == 'shipped' ? 'selected' : '' }}>
+                                                        Shipped</option>
+                                                    <option value="delivered" {{ $order->status == 'delivered' ? 'selected' : '' }}>Delivered</option>
+                                                    <option value="failed" {{ $order->status == 'failed' ? 'selected' : '' }}>
+                                                        Failed</option>
+                                                </select>
+                                            </form>
+                                        </td>
+                                        <td class="px-6 py-5 text-right">
+                                            <button class="text-primary hover:underline text-sm font-bold">Lihat
+                                                Detail</button>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="6" class="px-6 py-5 text-center text-slate-500">No orders found.</td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
@@ -164,4 +112,4 @@
         </tbody>
 
         </html>
-    @endsection
+@endsection

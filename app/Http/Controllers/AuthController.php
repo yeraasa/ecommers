@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
 
-    public function  index()
+    public function index()
     {
         return view('auth.LandingPage');
     }
@@ -70,5 +70,15 @@ class AuthController extends Controller
 
         return redirect()->route('auth.signin')
             ->with('success', 'Account created successfully!');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('auth.index');
     }
 }

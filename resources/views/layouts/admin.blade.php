@@ -46,8 +46,7 @@
     <div class="flex min-h-screen">
 
         {{-- Sidebar --}}
-        <aside
-            class="w-64 flex-shrink-0 bg-white  border-primary flex flex-col">
+        <aside class="w-64 flex-shrink-0 bg-white  border-primary flex flex-col">
             <div class="p-6 flex items-center gap-3">
                 <div class="bg-primary/20 p-2 rounded-xl">
                     <span class="material-symbols-outlined text-primary text-3xl">filter_vintage</span>
@@ -85,6 +84,14 @@
                         <span class="material-symbols-outlined">settings</span>
                         <span class="text-sm font-medium">Settings</span>
                     </a>
+                    <form method="POST" action="{{ route('auth.logout') }}" class="mt-1">
+                        @csrf
+                        <button type="submit"
+                            class="w-full flex items-center gap-3 px-3 py-2 text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-900/20 rounded-xl transition-colors">
+                            <span class="material-symbols-outlined">logout</span>
+                            <span class="text-sm font-medium">Logout</span>
+                        </button>
+                    </form>
                 </div>
             </nav>
             <div class="p-4 border-t border-slate-200 dark:border-slate-800">

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@yield('title', 'Midnight Bloom', 'cart')</title>
+    <title>@yield('title', 'Midnight Bloom')</title>
 
     {{-- Material Symbols --}}
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
@@ -77,8 +77,16 @@
                         class="material-symbols-outlined">person</span></a>
             </nav>
 
-            <div class="mt-auto">
-                <span class="material-symbols-outlined text-slate-400">settings</span>
+            <div class="mt-auto flex flex-col items-center gap-6 pb-4">
+                <a href="#" class="text-slate-400 hover:text-primary" title="Settings">
+                    <span class="material-symbols-outlined">settings</span>
+                </a>
+                <form method="POST" action="{{ route('auth.logout') }}">
+                    @csrf
+                    <button type="submit" class="text-rose-400 hover:text-rose-600 flex items-center" title="Logout">
+                        <span class="material-symbols-outlined">logout</span>
+                    </button>
+                </form>
             </div>
         </aside>
 
@@ -92,6 +100,35 @@
 
 
             {{-- Content --}}
+            @if(session('success'))
+                <div class="max-w-7xl mx-auto px-6 mt-4">
+                    <div class="bg-emerald-100 border border-emerald-400 text-emerald-700 px-4 py-3 rounded relative"
+                        role="alert">
+                        <span class="block sm:inline">{{ session('success') }}</span>
+                    </div>
+                </div>
+            @endif
+
+            @if(session('error'))
+                <div class="max-w-7xl mx-auto px-6 mt-4">
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline">{{ session('error') }}</span>
+                    </div>
+                </div>
+            @endif
+
+            @if($errors->any())
+                <div class="max-w-7xl mx-auto px-6 mt-4">
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                        <ul class="list-disc list-inside">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            @endif
+
             @yield('content')
         </main>
     </div>

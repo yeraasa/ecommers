@@ -88,7 +88,8 @@
                 @empty
                     <div class="text-center py-20">
                         <p class="text-gray-500">Cart kamu masih kosong 🛒</p>
-                        <a href="{{ route('products.index') }}" class="text-primary font-bold mt-4 inline-block underline">Mulai Belanja</a>
+                        <a href="{{ route('products.index') }}" class="text-primary font-bold mt-4 inline-block underline">Mulai
+                            Belanja</a>
                     </div>
                 @endforelse
             </div>
@@ -116,9 +117,10 @@
                         </span>
                     </div>
 
-                    <button class="w-full bg-primary text-white font-bold py-4 rounded-xl">
+                    <a href="{{ route('checkout.index') }}"
+                        class="w-full bg-primary text-white font-bold py-4 rounded-xl block text-center hover:bg-opacity-90 transition-all">
                         Proceed to Checkout
-                    </button>
+                    </a>
                 </div>
             </aside>
 

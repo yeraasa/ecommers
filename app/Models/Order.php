@@ -9,15 +9,21 @@ class Order extends Model
     protected $fillable = [
         'user_id',
         'total_price',
-        'status'
+        'status',
+        'address',
+        'city',
+        'postal_code',
+        'phone'
     ];
 
-    public function OrderItem (){
+    public function OrderItem()
+    {
         return $this->hasMany(OrderItem::class);
     }
 
-    public function user () {
+    public function user()
+    {
         return $this->belongsTo(User::class);
-    }   
+    }
 }
 

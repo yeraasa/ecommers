@@ -6,56 +6,20 @@ use Illuminate\Http\Request;
 
 class ManageOrders extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view('admin.ManageOrders');
+        $orders = Order::with('user')->latest()->paginate(10);
+        return view('admin.ManageOrders', compact('orders'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function updateStatus(Request $request, Order $order)
     {
-        //
-    }
+        $request->validate([
+            'status' => 'required|in:pending,completed,cancelled,shipped,delivered'
+        ]);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        
-    }
+        $order->update(['status' => $request->status]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return redirect()->back()->with('success', 'Order status updated successfully.');
     }
 }

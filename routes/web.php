@@ -8,14 +8,22 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ManageProductss;
 use App\Http\Controllers\ManageOrders;
 use App\Http\Controllers\SalesStatistic;
-
+use App\Http\Controllers\CheckoutController;
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-Route::resource('cart', CartController::class);
 Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
 Route::get('/', [AuthController::class, 'index'])->name('auth.index');
-Route::post('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::resource('cart', CartController::class)->except(['index']);
+
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+    Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
+    Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
+
+    Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+});
 
 // product management CRUD
 Route::get('/manage-products', [ManageProductss::class, 'index'])->name('manage-products.index');
@@ -34,6 +42,7 @@ Route::post('/add-products', function () {
 });
 
 Route::get('/manage-orders', [ManageOrders::class, 'index'])->name('manage-orders.index');
+Route::post('/manage-orders/{order}/status', [ManageOrders::class, 'updateStatus'])->name('manage-orders.updateStatus');
 Route::get('/sales-statistic', [SalesStatistic::class, 'index'])->name('sales-statistic.index');
 route::get('/signin', [AuthController::class, 'signin'])->name('auth.signin');
 route::get('/signup', [AuthController::class, 'signup'])->name('auth.signup');
