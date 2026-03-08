@@ -57,11 +57,6 @@
                 </div>
             </div>
             <nav class="flex-1 px-4 py-4 space-y-1 overflow-y-auto">
-                <a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors"
-                    href="#">
-                    <span class="material-symbols-outlined">dashboard</span>
-                    <span class="text-sm font-medium">Dashboard</span>
-                </a>
                 <a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded-xl"
                     href=" {{ route('manage-products.index') }}">
                     <span class="material-symbols-outlined">inventory_2</span>
@@ -79,11 +74,6 @@
                     <span class="text-sm font-medium">Statistic</span>
                 </a>
                 <div class="pt-4 pb-2 border-t border-slate-200 dark:border-slate-800 mt-4">
-                    <a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors"
-                        href="#">
-                        <span class="material-symbols-outlined">settings</span>
-                        <span class="text-sm font-medium">Settings</span>
-                    </a>
                     <form method="POST" action="{{ route('auth.logout') }}" class="mt-1">
                         @csrf
                         <button type="submit"

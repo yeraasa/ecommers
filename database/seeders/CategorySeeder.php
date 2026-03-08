@@ -16,6 +16,9 @@ class CategorySeeder extends Seeder
         $category = [
             ['name' => 'flower'],
             ['name' => 'bucket'],
+            ['name' => 'Seeds'],
+            ['name' => 'Plants'],
+
         ];
         foreach ($category as $cat) {
             Category::create($cat);
