@@ -13,9 +13,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap"
         rel="stylesheet">
 
-    {{-- Tailwind CDN --}}
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -25,8 +22,7 @@
                         primary: "oklch(76.5% 0.177 163.223)",
                         "background-light": "#f6f7f8",
                         "background-dark": "#101922",
-                        "border-light": "#e5e7eb",
-                        "border-dark": "#2d3748",
+                        "border-light": "#e2e8f0 ",
                     },
                     fontFamily: {
                         display: ["Libre Baskerville", "serif"],
@@ -52,6 +48,7 @@
         }
     </style>
 
+    @vite('resources/css/app.css')
     @stack('styles')
 </head>
 
@@ -59,28 +56,25 @@
     <div class="flex h-screen overflow-hidden">
         {{-- Sidebar --}}
         <aside
-            class="w-16 flex flex-col items-center py-6 bg-white dark:bg-background-dark border-r border-border-light dark:border-border-dark z-20">
+            class="w-16 flex flex-col items-center py-6 bg-white dark:bg-background-dark border-r border-slate-200 z-20">
             <div class="mb-10 text-emerald-400">
                 <span class="material-symbols-outlined text-3xl font-bold">local_florist
                 </span>
             </div>
 
             <nav class="flex flex-col gap-8">
-                <a class="text-primary flex flex-col items-center" href="{{ route('products.index') }}">
+                <a class="text-slate-400 hover:text-emerald-400" href="{{ route('products.index') }}">
                     <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">house</span>
                 </a>
-                <a class="text-slate-400 hover:text-primary" href="{{ route('category.index') }}"><span
+                <a class="text-slate-400 hover:text-emerald-400" href="{{ route('category.index') }}"><span
                         class="material-symbols-outlined">search</span></a>
-                <a class="text-slate-400 hover:text-primary" href="{{ route('cart.index') }}"><span
+                <a class="text-slate-400 hover:text-emerald-400" href="{{ route('cart.index') }}"><span
                         class="material-symbols-outlined">shopping_cart</span></a>
-                <a class="text-slate-400 hover:text-primary" href="#"><span
+                <a class="text-slate-400 hover:text-emerald-400" href="#"><span
                         class="material-symbols-outlined">person</span></a>
             </nav>
 
             <div class="mt-auto flex flex-col items-center gap-6 pb-4">
-                <a href="#" class="text-slate-400 hover:text-primary" title="Settings">
-                    <span class="material-symbols-outlined">settings</span>
-                </a>
                 <form method="POST" action="{{ route('auth.logout') }}">
                     @csrf
                     <button type="submit" class="text-rose-400 hover:text-rose-600 flex items-center" title="Logout">
@@ -93,33 +87,34 @@
         <main class="flex-1 overflow-y-auto">
             {{-- Header --}}
             <header
-                class="flex justify-between px-6 py-4 bg-white dark:bg-background-dark/50 sticky top-0 text-teal-500 border-b border-border-light dark:border-border-dark">
+                class="flex justify-between px-6 z-50 py-4 bg-white dark:bg-background-dark/50 sticky top-0 text-emerald-400 border-b border-slate-200">
                 <h1 class="font-bold text uppercase ">Midnight Bloom</h1>
-                <span class="material-symbols-outlined ">notifications</span>
             </header>
 
 
             {{-- Content --}}
-            @if(session('success'))
+            @if (session('success'))
                 <div class="max-w-7xl mx-auto px-6 mt-4">
-                    <div class="bg-emerald-100 border border-emerald-400 text-emerald-700 px-4 py-3 rounded relative"
+                    <div class="bg-emerald-100 border border-slate-200 text-emerald-700 px-4 py-3 rounded relative"
                         role="alert">
                         <span class="block sm:inline">{{ session('success') }}</span>
                     </div>
                 </div>
             @endif
 
-            @if(session('error'))
+            @if (session('error'))
                 <div class="max-w-7xl mx-auto px-6 mt-4">
-                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+                        role="alert">
                         <span class="block sm:inline">{{ session('error') }}</span>
                     </div>
                 </div>
             @endif
 
-            @if($errors->any())
+            @if ($errors->any())
                 <div class="max-w-7xl mx-auto px-6 mt-4">
-                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+                        role="alert">
                         <ul class="list-disc list-inside">
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>

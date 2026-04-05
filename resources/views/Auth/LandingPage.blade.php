@@ -25,8 +25,7 @@
                         primary: "oklch(76.5% 0.177 163.223)",
                         "background-light": "#f6f7f8",
                         "background-dark": "#101922",
-                        "border-light": "#e5e7eb",
-                        "border-dark": "#2d3748",
+                        "border-light": "#e2e8f0 ",
                     },
                     fontFamily: {
                         display: ["Libre Baskerville", "serif"],

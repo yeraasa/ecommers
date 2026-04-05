@@ -21,7 +21,7 @@
                     <div class="border-b border-gray-200 py-6">
                         <div class="flex gap-6 items-center">
                             {{-- PERBAIKAN DI SINI: Wadah Gambar --}}
-                            <div class="w-32 h-32 shrink-0 overflow-hidden rounded-xl border bg-gray-50">
+                            <div class="w-32 h-32 shrink-0 overflow-hidden rounded-xl border-slate-300 bg-gray-50">
                                 <img src="{{ asset('storage/' . $item->product->image) }}" alt="{{ $item->product->name }}"
                                     class="w-full h-full object-cover" />
                             </div>
@@ -41,7 +41,7 @@
 
                                 {{-- QTY CONTROL --}}
                                 <div class="flex flex-col items-end gap-3">
-                                    <div class="flex items-center gap-3 bg-white border p-1 rounded-lg">
+                                    <div class="flex items-center gap-3 bg-white border-slate-200 border-2 p-1 rounded-lg">
                                         {{-- MINUS --}}
                                         <form method="POST" action="{{ route('cart.update', $item) }}">
                                             @csrf
@@ -96,7 +96,7 @@
 
             {{-- RIGHT: SUMMARY --}}
             <aside class="w-full lg:w-[30%] lg:sticky lg:top-24">
-                <div class="bg-white border rounded-xl p-6">
+                <div class="bg-white border-slate-200 border-2  rounded-xl p-6">
                     <h3 class="text-xl font-bold mb-6">Order Summary</h3>
 
                     <div class="space-y-4 mb-6">

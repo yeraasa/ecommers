@@ -15,7 +15,7 @@
 
                 {{-- LEFT: SHIPPING INFO --}}
                 <div class="w-full lg:w-[65%] space-y-6">
-                    <div class="bg-white border rounded-xl p-6 shadow-sm">
+                    <div class="bg-white border- rounded-xl p-6 shadow-sm">
                         <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
                             <span class="material-symbols-outlined text-primary">local_shipping</span>
                             Shipping Information

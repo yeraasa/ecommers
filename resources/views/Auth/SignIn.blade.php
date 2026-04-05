@@ -57,7 +57,8 @@
                         value="{{ old('email') }}"
                         required
                         class="w-full px-4 py-3.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-transparent focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
-                        placeholder="name@company.com"
+                        placeholder="name@gmail.com"
+                        autocomplete="off"
                     >
                     @error('email')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
@@ -72,17 +73,11 @@
                         required
                         class="w-full px-4 py-3.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-transparent focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
                         placeholder="••••••••"
+                        autocomplete="off"
                     >
                     @error('password')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
-                </div>
-
-                <div class="flex items-center">
-                    <input type="checkbox" name="remember" class="h-4 w-4 text-primary border-slate-300 rounded">
-                    <label class="ml-2 text-sm text-slate-600 dark:text-slate-400">
-                        Keep me signed in
-                    </label>
                 </div>
 
                 <button

@@ -10,33 +10,52 @@
             <h1 class="text-slate-900 dark:text-slate-100 text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">
                 Find your perfect bloom</h1>
             <div class="max-w-2xl mx-auto relative group">
-                <div
-                    class="flex items-center bg-white dark:bg-slate-800 shadow-xl shadow-primary/5 rounded-2xl overflow-hidden border-2 border-transparent focus-within:border-primary transition-all duration-300">
-                    <div class="pl-6 text-slate-400">
-                        <span class="material-symbols-outlined">search</span>
+                <form action="{{ route('products.search') }}" method="GET">
+                    <div
+                        class="flex items-center bg-white dark:bg-slate-800 shadow-xl shadow-primary/5 rounded-2xl overflow-hidden border-2 border-transparent focus-within:border-primary transition-all duration-300">
+                        <div class="pl-6 text-slate-400">
+                            <span class="material-symbols-outlined">search</span>
+                        </div>
+                        <input
+                            name="query"
+                            class="w-full py-5 px-4 text-lg bg-transparent border-none focus:ring-0 focus:outline-0 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 font-medium"
+                            placeholder="Search for flowers, fertilizers, or tools..." type="text" />
                     </div>
-                    <input
-                        class="w-full py-5 px-4 text-lg bg-transparent border-none focus:ring-0 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 font-medium"
-                        placeholder="Search for flowers, fertilizers, or tools..." type="text" />
-                    <div class="pr-2">
-                        <button
-                            class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-xl font-bold transition-all shadow-lg shadow-primary/20">
-                            Search
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-6 flex flex-wrap justify-center gap-3 text-sm">
-                <span class="text-slate-500 font-medium">Trending:</span>
-                <a class="text-primary hover:underline decoration-2 underline-offset-4" href="#">Tulips</a>
-                <span class="text-slate-300">•</span>
-                <a class="text-primary hover:underline decoration-2 underline-offset-4" href="#">Ceramic
-                    Pots</a>
-                <span class="text-slate-300">•</span>
-                <a class="text-primary hover:underline decoration-2 underline-offset-4" href="#">Organic
-                    Soil</a>
+                </form>
             </div>
         </div>
+
+        @if (isset($items) && $items->isNotEmpty())
+            <div class="grid grid-cols-5 gap-2 mx-auto max-w-7xl px-6">
+                @foreach ($items as $item)
+                    <div class="flex flex-col h-auto gap-2 p-4 rounded-lg border border-slate-200 dark:border-slate-700">
+                        <div class="aspect-square bg-white dark:bg-slate-800 rounded-lg overflow-hidden">
+                            <div class="w-full h-full bg-cover bg-center">
+                                <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}" />
+                            </div>
+                        </div>
+                        <div class="flex flex-col">
+                            <p class="text-base font-bold truncate">{{ $item->name }}</p>
+                            <div class="flex flex-col justify-center">
+                                <p class="text-base text-slate-500">${{ number_format($item->price, 2) }}</p>
+                            </div>
+                        </div>
+                        <form action="{{ route('cart.store') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="product_id" value="{{ $item->id }}">
+                            <button type="submit" class="bg-emerald-300 p-1.5 pb-0 rounded-md">
+                                <span class="material-symbols-outlined">add_shopping_cart</span>
+                            </button>
+                        </form>
+                    </div>
+                @endforeach
+            </div>
+        @else
+            <div class="col-span-full text-center text-slate-500">
+                <p>No products found.</p>
+            </div>
+        @endif
+
         <!-- Browse by Category Section -->
         <section class="max-w-7xl mx-auto px-6 py-12">
             <div class="flex items-center justify-between mb-10">
@@ -52,7 +71,7 @@
                         <img src="{{ asset('assets/images/flower.jpg') }}" alt="flower"
                             class="w-full h-full object-cover">
                     </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent">
+                    <div class="absolute inset-0 bg-linear-to-t from-slate-900/80 via-slate-900/20 to-transparent">
                     </div>
                     <div class="absolute bottom-6 left-6 right-6">
                         <h3 class="text-white text-2xl font-bold mb-1">Fresh Flowers</h3>
@@ -70,7 +89,7 @@
                         <img src="{{ asset('assets/images/potted plants.jpg') }}" alt="potted plants"
                             class="w-full h-full object-cover">
                     </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent">
+                    <div class="absolute inset-0 bg-linear-to-t from-slate-900/80 via-slate-900/20 to-transparent">
                     </div>
                     <div class="absolute bottom-6 left-6 right-6">
                         <h3 class="text-white text-2xl font-bold mb-1">Potted Plants</h3>
@@ -88,7 +107,7 @@
                         <img src="{{ asset('assets/images/garden tools.jpg') }}" alt="garden tools"
                             class="w-full h-full object-cover">
                     </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent">
+                    <div class="absolute inset-0 bg-linear-to-t from-slate-900/80 via-slate-900/20 to-transparent">
                     </div>
                     <div class="absolute bottom-6 left-6 right-6">
                         <h3 class="text-white text-2xl font-bold mb-1">Gardening Tools</h3>
@@ -103,10 +122,9 @@
                 <div
                     class="group relative h-72 rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                     <div class="absolute inset-0 transition-transform duration-700 group-hover:scale-110">
-                        <img src="{{ asset('assets/images/pupuk.jpg') }}" alt="pupuk"
-                            class="w-full h-full object-cover">
+                        <img src="{{ asset('assets/images/pupuk.jpg') }}" alt="pupuk" class="w-full h-full object-cover">
                     </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent">
+                    <div class="absolute inset-0 bg-linear-to-t from-slate-900/80 via-slate-900/20 to-transparent">
                     </div>
                     <div class="absolute bottom-6 left-6 right-6">
                         <h3 class="text-white text-2xl font-bold mb-1">Fertilizers</h3>
@@ -124,7 +142,7 @@
                         <img src="{{ asset('assets/images/bucket.jpg') }}" alt=" bucket"
                             class="w-full h-full object-cover">
                     </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent">
+                    <div class="absolute inset-0 bg-linear-to-t from-slate-900/80 via-slate-900/20 to-transparent">
                     </div>
                     <div class="absolute bottom-6 left-6 right-6">
                         <h3 class="text-white text-2xl font-bold mb-1">Gift Buckets</h3>
@@ -139,9 +157,10 @@
                 <div
                     class="group relative h-72 rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                     <div class="absolute inset-0 transition-transform duration-700 group-hover:scale-110">
-                        <img src="{{ asset('assets/images/seeds.jpg') }}" alt="seeds" class="w-full h-full object-cover">
+                        <img src="{{ asset('assets/images/seeds.jpg') }}" alt="seeds"
+                            class="w-full h-full object-cover">
                     </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent">
+                    <div class="absolute inset-0 bg-linear-to-t from-slate-900/80 via-slate-900/20 to-transparent">
                     </div>
                     <div class="absolute bottom-6 left-6 right-6">
                         <h3 class="text-white text-2xl font-bold mb-1">Seeds</h3>

@@ -9,6 +9,7 @@ use App\Http\Controllers\ManageProductss;
 use App\Http\Controllers\ManageOrders;
 use App\Http\Controllers\SalesStatistic;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\DetailProductsController;
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
@@ -21,6 +22,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
     Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
     Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
+
+    // web.php
+    Route::get('/search', [ProductController::class, 'search'])->name('products.search');
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 });
@@ -48,4 +52,6 @@ route::get('/signin', [AuthController::class, 'signin'])->name('auth.signin');
 route::get('/signup', [AuthController::class, 'signup'])->name('auth.signup');
 route::post('/signin', [AuthController::class, 'signinPost'])->name('auth.signin.post');
 route::post('/signup', [AuthController::class, 'signupPost'])->name('auth.signup.post');
+
+Route::get('/detail-products', [DetailProductsController::class, 'index'])->name('detail-products.index');
 

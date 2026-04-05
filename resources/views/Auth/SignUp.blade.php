@@ -23,10 +23,6 @@
             <h1 class="text-5xl font-extrabold leading-tight mb-6">
                 Experience the Art of Floral Elegance
             </h1>
-
-            <p class="text-lg text-slate-300 font-light leading-relaxed">
-                Join our exclusive community and discover curated botanical collections delivered directly to your door.
-            </p>
         </div>
     </div>
 
@@ -58,6 +54,7 @@
                         required
                         class="w-full px-4 py-3.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-transparent focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
                         placeholder="Name"
+                        autocomplete="off"
                     >
                     @error('name')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
@@ -69,10 +66,11 @@
                     <input
                         type="email"
                         name="email"
-                        value="{{ ('email') }}"
+                        {{-- value="{{ ('email') }}" --}}
                         required
                         class="w-full px-4 py-3.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-transparent focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
-                        placeholder="name@company.com"
+                        placeholder="name@gmail.com"
+                        autocomplete="off"
                     >
                     @error('email')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
@@ -87,6 +85,7 @@
                         required
                         class="w-full px-4 py-3.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-transparent focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
                         placeholder="••••••••"
+                        autocomplete="off"
                     >
                     @error('password')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
