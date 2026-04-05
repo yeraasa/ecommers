@@ -10,6 +10,7 @@ use App\Http\Controllers\ManageOrders;
 use App\Http\Controllers\SalesStatistic;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DetailProductsController;
+use App\Http\Controllers\OrderController;
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/product/{id}', [ProductController::class, 'detail'])->name('products.detail');
@@ -28,6 +29,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/search', [ProductController::class, 'search'])->name('products.search');
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
 });
 
 // product management CRUD

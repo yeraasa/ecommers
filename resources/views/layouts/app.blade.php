@@ -70,8 +70,8 @@
                         class="material-symbols-outlined">search</span></a>
                 <a class="text-slate-400 hover:text-emerald-400" href="{{ route('cart.index') }}"><span
                         class="material-symbols-outlined">shopping_cart</span></a>
-                <a class="text-slate-400 hover:text-emerald-400" href="#"><span
-                        class="material-symbols-outlined">person</span></a>
+                <a class="text-slate-400 hover:text-emerald-400" href="{{ route('orders.index') }}"><span
+                        class="material-symbols-outlined">receipt_long</span></a>
             </nav>
 
             <div class="mt-auto flex flex-col items-center gap-6 pb-4">
