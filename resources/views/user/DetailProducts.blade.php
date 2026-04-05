@@ -38,20 +38,10 @@
                                 {{ $item->description }}
                             </p>
                         </div>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div
-                                class="bg-surface-container border-slate border-primary/10 bg-emerald-400 rounded-xl p-4 flex flex-col items-center text-center">
-                                <span class="material-symbols-outlined text-primary mb-2" data-icon="eco">eco</span>
-                                <span
-                                    class="text-[10px] font-bold uppercase tracking-widest text-on-surface">Sustainable</span>
-                            </div>
-                            <div
-                                class="bg-surface-container border-slate border-primary/10 bg-emerald-400 rounded-xl p-4 flex flex-col items-center text-center">
-                                <span class="material-symbols-outlined text-primary mb-2"
-                                    data-icon="auto_awesome">auto_awesome</span>
-                                <span
-                                    class="text-[10px] font-bold uppercase tracking-widest text-on-surface">Hand-Treated</span>
-                            </div>
+                        <div
+                            class="bg-surface-container border-slate border-primary/10 bg-emerald-400 rounded-xl p-4 flex flex-col items-center text-center">
+                            <span
+                                class="text-base font-bold uppercase tracking-widest text-on-surface">{{ $item->category }}</span>
                         </div>
                         <div class="space-y-4">
                             <h3 class="text-xs font-black uppercase tracking-widest text-primary">Care Instructions</h3>

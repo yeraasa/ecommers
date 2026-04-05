@@ -14,11 +14,12 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         $category = [
-            ['name' => 'flower'],
-            ['name' => 'bucket'],
+            ['name' => 'Fresh Flowers'],
+            ['name' => 'Potted Plants'],
+            ['name' => 'Gardening Tools'],
+            ['name' => 'Fertilizers'],
+            ['name' => 'Gift Buckets'],
             ['name' => 'Seeds'],
-            ['name' => 'Plants'],
-
         ];
         foreach ($category as $cat) {
             Category::create($cat);

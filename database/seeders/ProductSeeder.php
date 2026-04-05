@@ -10,14 +10,13 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         $products = [
-
             // Bouquet
             [
                 'name' => 'Red Rose Bouquet',
                 'price' => 22.00,
                 'description' => 'Elegant bouquet of fresh red roses for special occasions.',
                 'stock_quantity' => 20,
-                'category' => 'bucket',
+                'category' => 'Gift Buckets',
                 'image' => 'products/rose bouqet.jpg'
             ],
             [
@@ -25,7 +24,7 @@ class ProductSeeder extends Seeder
                 'price' => 18.50,
                 'description' => 'Bright sunflower bouquet perfect for cheerful gifts.',
                 'stock_quantity' => 15,
-                'category' => 'Bucket',
+                'category' => 'Gift Buckets',
                 'image' => 'products/sunflower bouqet.jpg'
             ],
             [
@@ -33,7 +32,7 @@ class ProductSeeder extends Seeder
                 'price' => 24.00,
                 'description' => 'A colorful mix of seasonal flowers arranged beautifully.',
                 'stock_quantity' => 12,
-                'category' => 'Bucket',
+                'category' => 'Gift Buckets',
                 'image' => 'products/thumbelina.jpg'
             ],
 
@@ -43,7 +42,7 @@ class ProductSeeder extends Seeder
                 'price' => 10.00,
                 'description' => 'Fresh white lilies with a pleasant fragrance.',
                 'stock_quantity' => 25,
-                'category' => 'flower',
+                'category' => 'Fresh Flowers',
                 'image' => 'products/lili bouqet.jpg'
 
             ],
@@ -54,7 +53,7 @@ class ProductSeeder extends Seeder
                 'price' => 6.00,
                 'description' => 'Small cactus plant suitable for desk decoration.',
                 'stock_quantity' => 40,
-                'category' => 'Plants',
+                'category' => 'Potted Plants',
                 'image' => 'products/cactus plants.jpg'
             ],
             [
@@ -62,7 +61,7 @@ class ProductSeeder extends Seeder
                 'price' => 7.50,
                 'description' => 'Low maintenance succulent perfect for indoor spaces.',
                 'stock_quantity' => 35,
-                'category' => 'Plants',
+                'category' => 'Potted Plants',
                 'image' => 'products/succulents pkants.jpg'
             ],
             [
@@ -70,7 +69,7 @@ class ProductSeeder extends Seeder
                 'price' => 8.50,
                 'description' => 'Air purifying plant ideal for home decoration.',
                 'stock_quantity' => 20,
-                'category' => 'Plants',
+                'category' => 'Potted Plants',
                 'image' => 'products/mini snake plant.jpg'
             ],
             [
@@ -78,7 +77,7 @@ class ProductSeeder extends Seeder
                 'price' => 9.00,
                 'description' => 'Healthy aloe vera plant useful for skincare and decoration.',
                 'stock_quantity' => 18,
-                'category' => 'Plants',
+                'category' => 'Potted Plants',
                 'image' => 'products/mini aloe vera.jpg'
             ],
 
@@ -107,6 +106,7 @@ class ProductSeeder extends Seeder
                 'category' => 'Seeds',
                 'image' => 'products/rose seed.jpg'
             ],
+
 
             // Fertilizer
             // [

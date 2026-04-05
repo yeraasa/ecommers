@@ -50,8 +50,8 @@
                     </div>
                 @endforeach
             </div>
-        @else
-            <div class="col-span-full text-center text-slate-500">
+        @elseif(isset($items) && (request()->has('category') || request()->has('query')))
+            <div class="col-span-full text-center text-slate-500 my-8">
                 <p>No products found.</p>
             </div>
         @endif
@@ -65,8 +65,8 @@
             <!-- Category Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Fresh Flowers -->
-                <div
-                    class="group relative h-72 rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <a href="{{ route('category.index', ['category' => 'Fresh Flowers']) }}"
+                    class="block group relative h-72 rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                     <div class="absolute inset-0 transition-transform duration-700 group-hover:scale-110">
                         <img src="{{ asset('assets/images/flower.jpg') }}" alt="flower"
                             class="w-full h-full object-cover">
@@ -81,10 +81,10 @@
                         class="absolute top-4 right-4 bg-white/20 backdrop-blur-md rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity">
                         <span class="material-symbols-outlined text-white">trending_flat</span>
                     </div>
-                </div>
+                </a>
                 <!-- Potted Plants -->
-                <div
-                    class="group relative h-72 rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <a href="{{ route('category.index', ['category' => 'Potted Plants']) }}"
+                    class="block group relative h-72 rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                     <div class="absolute inset-0 transition-transform duration-700 group-hover:scale-110">
                         <img src="{{ asset('assets/images/potted plants.jpg') }}" alt="potted plants"
                             class="w-full h-full object-cover">
@@ -99,10 +99,10 @@
                         class="absolute top-4 right-4 bg-white/20 backdrop-blur-md rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity">
                         <span class="material-symbols-outlined text-white">trending_flat</span>
                     </div>
-                </div>
+                </a>
                 <!-- Gardening Tools -->
-                <div
-                    class="group relative h-72 rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <a href="{{ route('category.index', ['category' => 'Gardening Tools']) }}"
+                    class="block group relative h-72 rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                     <div class="absolute inset-0 transition-transform duration-700 group-hover:scale-110">
                         <img src="{{ asset('assets/images/garden tools.jpg') }}" alt="garden tools"
                             class="w-full h-full object-cover">
@@ -117,10 +117,10 @@
                         class="absolute top-4 right-4 bg-white/20 backdrop-blur-md rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity">
                         <span class="material-symbols-outlined text-white">trending_flat</span>
                     </div>
-                </div>
+                </a>
                 <!-- Fertilizers -->
-                <div
-                    class="group relative h-72 rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <a href="{{ route('category.index', ['category' => 'Fertilizers']) }}"
+                    class="block group relative h-72 rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                     <div class="absolute inset-0 transition-transform duration-700 group-hover:scale-110">
                         <img src="{{ asset('assets/images/pupuk.jpg') }}" alt="pupuk" class="w-full h-full object-cover">
                     </div>
@@ -134,10 +134,10 @@
                         class="absolute top-4 right-4 bg-white/20 backdrop-blur-md rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity">
                         <span class="material-symbols-outlined text-white">trending_flat</span>
                     </div>
-                </div>
+                </a>
                 <!-- Gift Buckets -->
-                <div
-                    class="group relative h-72 rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <a href="{{ route('category.index', ['category' => 'Gift Buckets']) }}"
+                    class="block group relative h-72 rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                     <div class="absolute inset-0 transition-transform duration-700 group-hover:scale-110">
                         <img src="{{ asset('assets/images/bucket.jpg') }}" alt=" bucket"
                             class="w-full h-full object-cover">
@@ -152,10 +152,10 @@
                         class="absolute top-4 right-4 bg-white/20 backdrop-blur-md rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity">
                         <span class="material-symbols-outlined text-white">trending_flat</span>
                     </div>
-                </div>
+                </a>
                 <!-- Seeds -->
-                <div
-                    class="group relative h-72 rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <a href="{{ route('category.index', ['category' => 'Seeds']) }}"
+                    class="block group relative h-72 rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                     <div class="absolute inset-0 transition-transform duration-700 group-hover:scale-110">
                         <img src="{{ asset('assets/images/seeds.jpg') }}" alt="seeds"
                             class="w-full h-full object-cover">
@@ -170,7 +170,7 @@
                         class="absolute top-4 right-4 bg-white/20 backdrop-blur-md rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity">
                         <span class="material-symbols-outlined text-white">trending_flat</span>
                     </div>
-                </div>
+                </a>
             </div>
         </section>
     </main>

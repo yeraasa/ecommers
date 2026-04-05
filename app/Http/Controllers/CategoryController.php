@@ -10,9 +10,17 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('user.category');
+        $category = $request->input('category');
+        
+        if ($category) {
+            $items = \App\Models\Product::where('category', $category)->get();
+        } else {
+            $items = collect();
+        }
+        
+        return view('user.category', compact('items'));
     }
 
     /**
