@@ -48,8 +48,8 @@
                                             </div>
                                         </td>
                                         <td class="px-6 py-5 text-slate-500">{{ $order->created_at->format('Y-m-d') }}</td>
-                                        <td class="px-6 py-5 font-semibold">Rp
-                                            {{ number_format($order->total_price, 0, ',', '.') }}</td>
+                                        <td class="px-6 py-5 font-semibold">$
+                                            {{ number_format($order->total_price, 2) }}</td>
                                         <td class="px-6 py-5">
                                             <form action="{{ route('manage-orders.updateStatus', $order->id) }}" method="POST"
                                                 class="flex items-center gap-2">

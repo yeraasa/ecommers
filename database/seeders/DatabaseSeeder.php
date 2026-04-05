@@ -24,6 +24,13 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin',
         ]);
 
+        User::create([
+            'name' => 'User',
+            'email' => 'user@midnight.com',
+            'password' => FacadesHash::make('password'),
+            'role' => 'customer',
+        ]);
+
         $this->call(CategorySeeder::class);
         $this->call(ProductSeeder::class);
     }

@@ -74,7 +74,7 @@
                                 <td class="px-6 py-4 text-sm">
                                     <span class="font-medium">{{ $product->stock_quantity }}</span> <span class="text-slate-400">units</span>
                                 </td>
-                                <td class="px-6 py-4 text-sm font-semibold">Rp {{ number_format($product->price,0,',','.') }}</td>
+                                <td class="px-6 py-4 text-sm font-semibold">$ {{ number_format($product->price, 2) }}</td>
                                 <td class="px-6 py-4">
                                     @if($product->status === 'active')
                                         <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">Tersedia</span>

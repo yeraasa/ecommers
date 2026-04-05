@@ -118,7 +118,7 @@
                     </div>
 
                     <a href="{{ route('checkout.index') }}"
-                        class="w-full bg-primary text-white font-bold py-4 rounded-xl block text-center hover:bg-opacity-90 transition-all">
+                        class="w-full bg-emerald-400 text-white font-bold py-4 rounded-xl block text-center hover:bg-opacity-90 transition-all">
                         Proceed to Checkout
                     </a>
                 </div>

@@ -7,18 +7,18 @@
     <!-- Hero Search Section -->
     <main class="flex-1">
         <div class="max-w-5xl mx-auto px-6 pt-16 pb-12 text-center">
-            <h1 class="text-slate-900 dark:text-slate-100 text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">
+            <h1 class="text-slate-900 text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">
                 Find your perfect bloom</h1>
             <div class="max-w-2xl mx-auto relative group">
                 <form action="{{ route('products.search') }}" method="GET">
                     <div
-                        class="flex items-center bg-white dark:bg-slate-800 shadow-xl shadow-primary/5 rounded-2xl overflow-hidden border-2 border-transparent focus-within:border-primary transition-all duration-300">
+                        class="flex items-center bg-white shadow-xl shadow-primary/5 rounded-2xl overflow-hidden border-2 border-transparent focus-within:border-primary transition-all duration-300">
                         <div class="pl-6 text-slate-400">
                             <span class="material-symbols-outlined">search</span>
                         </div>
                         <input
                             name="query"
-                            class="w-full py-5 px-4 text-lg bg-transparent border-none focus:ring-0 focus:outline-0 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 font-medium"
+                            class="w-full py-5 px-4 text-lg bg-transparent border-none focus:ring-0 focus:outline-0 text-slate-800 placeholder:text-slate-400 font-medium"
                             placeholder="Search for flowers, fertilizers, or tools..." type="text" />
                     </div>
                 </form>

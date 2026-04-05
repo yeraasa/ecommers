@@ -1,4 +1,4 @@
-@extends('layouts.auth')
+@extends('layouts.Auth')
 
 @section('title', 'Sign Up Midnight Bloom')
 

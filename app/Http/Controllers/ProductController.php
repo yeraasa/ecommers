@@ -29,4 +29,10 @@ class ProductController extends Controller
 
         return view('user.category', compact('items'));
     }
+
+    public function detail($id)
+    {
+        $item = Product::find($id);
+        return view('user.DetailProducts', compact('item'));
+    }
 }

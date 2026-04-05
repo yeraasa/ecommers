@@ -9,19 +9,19 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-
     public function index()
     {
-        return view('auth.LandingPage');
+        return view('Auth.LandingPage');
     }
+
     public function signin()
     {
-        return view('auth.signin');
+        return view('Auth.SignIn');
     }
 
     public function signup()
     {
-        return view('auth.signup');
+        return view('Auth.SignUp');
     }
 
     public function signinPost(Request $request)
