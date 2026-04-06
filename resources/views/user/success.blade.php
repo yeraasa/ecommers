@@ -19,10 +19,10 @@
                 class="bg-primary text-white font-bold px-8 py-3 rounded-xl hover:bg-opacity-90 transition-all">
                 Continue Shopping
             </a>
-            <a href="#"
+            {{-- <a href="#"
                 class="border border-gray-300 text-gray-700 font-bold px-8 py-3 rounded-xl hover:bg-gray-50 transition-all">
                 View My Orders
-            </a>
+            </a> --}}
         </div>
     </main>
 @endsection

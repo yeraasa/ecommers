@@ -15,21 +15,6 @@
                         <span class="material-symbols-outlined text-sm">add</span>
                         <span>Tambah Produk</span>
                     </a>
-                    <button
-                        class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-colors">
-                        <span class="material-symbols-outlined text-sm">filter_list</span>
-                        <span>Filter</span>
-                    </button>
-                </div>
-                <div class="flex gap-2">
-                    <button
-                        class="p-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400">
-                        <span class="material-symbols-outlined">grid_view</span>
-                    </button>
-                    <button
-                        class="p-2 rounded-lg bg-slate-100 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 text-primary">
-                        <span class="material-symbols-outlined">list</span>
-                    </button>
                 </div>
             </div>
             <!-- Table -->

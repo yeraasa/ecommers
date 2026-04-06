@@ -7,7 +7,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ManageProductss;
 use App\Http\Controllers\ManageOrders;
-use App\Http\Controllers\SalesStatistic;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DetailProductsController;
 use App\Http\Controllers\OrderController;
@@ -52,7 +51,6 @@ Route::post('/add-products', function () {
 
 Route::get('/manage-orders', [ManageOrders::class, 'index'])->name('manage-orders.index');
 Route::post('/manage-orders/{order}/status', [ManageOrders::class, 'updateStatus'])->name('manage-orders.updateStatus');
-Route::get('/sales-statistic', [SalesStatistic::class, 'index'])->name('sales-statistic.index');
 route::get('/signin', [AuthController::class, 'signin'])->name('auth.signin');
 route::get('/signup', [AuthController::class, 'signup'])->name('auth.signup');
 route::post('/signin', [AuthController::class, 'signinPost'])->name('auth.signin.post');

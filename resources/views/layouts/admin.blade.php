@@ -67,12 +67,6 @@
                     <span class="material-symbols-outlined">shopping_cart</span>
                     <span class="text-sm font-medium">Manage Orders</span>
                 </a>
-                <a class="flex items-center gap-3 px-3 py-2 hover:bg-primary/10 dark:hover:bg-slate-800 text-primary  rounded-xl "
-                    href="
-                    {{ route('sales-statistic.index') }}">
-                    <span class="material-symbols-outlined">bar_chart</span>
-                    <span class="text-sm font-medium">Statistic</span>
-                </a>
                 <div class="pt-4 pb-2 border-t border-slate-200 dark:border-slate-800 mt-4">
                     <form method="POST" action="{{ route('auth.logout') }}" class="mt-1">
                         @csrf

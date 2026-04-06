@@ -26,7 +26,7 @@
         </div>
 
         @if (isset($items) && $items->isNotEmpty())
-            <div class="grid grid-cols-5 gap-2 mx-auto max-w-7xl px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-2 mx-auto max-w-7xl px-6">
                 @foreach ($items as $item)
                     <div class="flex flex-col h-auto gap-2 p-4 rounded-lg border border-slate-200 dark:border-slate-700">
                         <div class="aspect-square bg-white dark:bg-slate-800 rounded-lg overflow-hidden">

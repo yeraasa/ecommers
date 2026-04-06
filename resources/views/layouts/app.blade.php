@@ -52,26 +52,29 @@
     @stack('styles')
 </head>
 
-<body class="bg-background-light max-h-screen dark:bg-background-dark font-display">
+<body class="bg-background-light max-h-screen dark:bg-background-dark font-display relative">
     <div class="flex h-screen overflow-hidden">
-        {{-- Sidebar --}}
+
+        {{-- Sidebar (Desktop & Tablet Saja) --}}
         <aside
-            class="w-16 flex flex-col items-center py-6 bg-white dark:bg-background-dark border-r border-slate-200 z-20">
+            class="hidden md:flex w-16 flex-col items-center py-6 bg-white dark:bg-background-dark border-r border-slate-200 z-20">
             <div class="mb-10 text-emerald-400">
-                <span class="material-symbols-outlined text-3xl font-bold">local_florist
-                </span>
+                <span class="material-symbols-outlined text-3xl font-bold">local_florist</span>
             </div>
 
             <nav class="flex flex-col gap-8">
                 <a class="text-slate-400 hover:text-emerald-400" href="{{ route('products.index') }}">
                     <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">house</span>
                 </a>
-                <a class="text-slate-400 hover:text-emerald-400" href="{{ route('category.index') }}"><span
-                        class="material-symbols-outlined">search</span></a>
-                <a class="text-slate-400 hover:text-emerald-400" href="{{ route('cart.index') }}"><span
-                        class="material-symbols-outlined">shopping_cart</span></a>
-                <a class="text-slate-400 hover:text-emerald-400" href="{{ route('orders.index') }}"><span
-                        class="material-symbols-outlined">receipt_long</span></a>
+                <a class="text-slate-400 hover:text-emerald-400" href="{{ route('category.index') }}">
+                    <span class="material-symbols-outlined">search</span>
+                </a>
+                <a class="text-slate-400 hover:text-emerald-400" href="{{ route('cart.index') }}">
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                </a>
+                <a class="text-slate-400 hover:text-emerald-400" href="{{ route('orders.index') }}">
+                    <span class="material-symbols-outlined">receipt_long</span>
+                </a>
             </nav>
 
             <div class="mt-auto flex flex-col items-center gap-6 pb-4">
@@ -84,15 +87,25 @@
             </div>
         </aside>
 
-        <main class="flex-1 overflow-y-auto">
+        {{-- Main Content - Ditambahkan pb-16 untuk mobile agar konten tidak tertutup bottom nav --}}
+        <main class="flex-1 overflow-y-auto pb-16 md:pb-0">
+
             {{-- Header --}}
             <header
-                class="flex justify-between px-6 z-50 py-4 bg-white dark:bg-background-dark/50 sticky top-0 text-emerald-400 border-b border-slate-200">
+                class="flex justify-between items-center px-6 z-50 py-4 bg-white/90 backdrop-blur-sm dark:bg-background-dark/90 sticky top-0 text-emerald-400 border-b border-slate-200">
                 <h1 class="font-bold text uppercase ">Midnight Bloom</h1>
+
+                {{-- Tombol Logout (Mobile Saja - Pindah ke header karena bottom nav penuh) --}}
+                <form method="POST" action="{{ route('auth.logout') }}" class="md:hidden m-0">
+                    @csrf
+                    <button type="submit" class="text-rose-400 hover:text-rose-600 flex items-center" title="Logout">
+                        <span class="material-symbols-outlined">logout</span>
+                    </button>
+                </form>
             </header>
 
 
-            {{-- Content --}}
+            {{-- Alerts --}}
             @if (session('success'))
                 <div class="max-w-7xl mx-auto px-6 mt-4">
                     <div class="bg-emerald-100 border border-slate-200 text-emerald-700 px-4 py-3 rounded relative"
@@ -124,9 +137,27 @@
                 </div>
             @endif
 
+            {{-- Slot Konten --}}
             @yield('content')
+
         </main>
     </div>
+
+    {{-- Bottom Navigation Bar (Mobile Saja) --}}
+    <nav class="md:hidden fixed bottom-0 w-full bg-white dark:bg-background-dark border-t border-slate-200 z-50 flex justify-around items-center h-16 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+        <a class="text-slate-400 hover:text-emerald-400 flex flex-col items-center justify-center w-full h-full" href="{{ route('products.index') }}">
+            <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">house</span>
+        </a>
+        <a class="text-slate-400 hover:text-emerald-400 flex flex-col items-center justify-center w-full h-full" href="{{ route('category.index') }}">
+            <span class="material-symbols-outlined">search</span>
+        </a>
+        <a class="text-slate-400 hover:text-emerald-400 flex flex-col items-center justify-center w-full h-full" href="{{ route('cart.index') }}">
+            <span class="material-symbols-outlined">shopping_cart</span>
+        </a>
+        <a class="text-slate-400 hover:text-emerald-400 flex flex-col items-center justify-center w-full h-full" href="{{ route('orders.index') }}">
+            <span class="material-symbols-outlined">receipt_long</span>
+        </a>
+    </nav>
 
     @stack('scripts')
 </body>
